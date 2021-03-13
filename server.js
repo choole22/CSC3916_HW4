@@ -86,7 +86,7 @@ router.post('/signin', function (req, res) {
 });
 
 router.get('/movies', function (req, res) {
-    var getMovie = Cluster0.findOne(req.body.mTitle);;
+    var getMovie = db.findOne(req.body.mTitle);;
     res.json ({status: 200, msg: 'GET movies'});
 });
 
@@ -95,7 +95,7 @@ router.post('/movies', function (req, res) {
        Movie_Title: req.body.mTitle
    };
 
-   Cluster0.save(newMovie); // No Dup-checking
+   db.save(newMovie); // No Dup-checking
    res.json({status: 200, msg: 'Movie saved'})
 });
 
