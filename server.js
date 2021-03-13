@@ -85,6 +85,11 @@ router.post('/signin', function (req, res) {
     })
 });
 
+router.get('/movies', function (req, res) {
+    var getMovie = db.findOne(req.body.mTitle);;
+    res.json ({status: 200, msg: 'GET movies'});
+});
+
 router.route('/movies')
     .delete(authController.isAuthenticated, function(req, res) {
             console.log(req.body);
