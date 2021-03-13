@@ -90,6 +90,15 @@ router.get('/movies', function (req, res) {
     res.json ({status: 200, msg: 'GET movies'});
 });
 
+router.post('/movies', function (req, res) {
+   var newMovie = {
+       Movie_Title: req.body.mTitle
+   };
+
+   db.save(newMovie); // No Dup-checking
+   res.json({status: 200, msg: 'Movie saved'})
+});
+
 router.route('/movies')
     .delete(authController.isAuthenticated, function(req, res) {
             console.log(req.body);
