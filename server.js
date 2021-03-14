@@ -101,6 +101,7 @@ router.post('/movies', function (req, res) {
         Actor_3: req.body.actor_3
     };
 
+    res.json(newMovie)
     db.save(newMovie); // No Dup-checking
     res.json({status: 200, msg: 'Movie saved'})
 });
