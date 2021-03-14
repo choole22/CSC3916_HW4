@@ -97,9 +97,9 @@ router.post('/movies', function (req, res) {
     movie.Title = req.body.title;
     movie.Genre = req.body.genre;
     movie.Year = req.body.year;
-    movie.Title = req.body.actor_1;
-    movie.Title = req.body.actor_2;
-    movie.Title = req.body.actor_3;
+    movie.Actor_1 = req.body.actor_1;
+    movie.Actor_2 = req.body.actor_2;
+    movie.Actor_3 = req.body.actor_3;
 
     movie.save(function(err){
         if (err) {
