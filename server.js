@@ -97,9 +97,14 @@ router.post('/movies', function (req, res) {
     movie.Title = req.body.title;
     movie.Genre = req.body.genre;
     movie.Year = req.body.year;
-    movie.Actor_1 = req.body.actor_1;
-    movie.Actor_2 = req.body.actor_2;
-    movie.Actor_3 = req.body.actor_3;
+    movie.Actors[0] = req.body.actor_1;
+    movie.Actors[1] = req.body.actor_2;
+    movie.Actors[2] = req.body.actor_3;
+    
+    if(movie.Actors[0] == 'NULL' || movie.Actors[1] == 'NULL' || movie.Actors[2] == 'NULL')
+    {
+        return res.json({Error: 'Missing attribute; could not add movie.'})
+    }
 
     movie.save(function(err){
         if (err) {
