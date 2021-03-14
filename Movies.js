@@ -23,8 +23,8 @@ var MovieSchema = new Schema({
     Actor_3: String
 });
 
-MovieSchema.pre('save', function() {
-    var movie = this;
+MovieSchema.pre('save', function(next) {
+    return next();
 });
 
 //return the model to server
