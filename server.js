@@ -89,8 +89,11 @@ router.post('/signin', function (req, res) {
 });
 
 router.get('/movies', function (req, res) {
-    var getMovies = Movie.find({});
-    res.json(getMovies);
+    //var getMovies = Movie.find({});
+    //res.json(getMovies);
+    
+    var o = getJSONObjectForMovieRequirement(req);
+    res.json(o);
 });
 
 
