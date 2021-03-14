@@ -2,13 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
-class Actor{
-    constructor(ActorName, CharacterName){
-        this.ActorName = null;
-        this.CharacterName = null;
-    }
-}
-
 mongoose.Promise = global.Promise;
 
 //mongoose.connect(process.env.DB, { useNewUrlParser: true });
