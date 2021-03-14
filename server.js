@@ -101,7 +101,7 @@ router.post('/movies', function (req, res) {
     movie.Actors[1] = req.body.actor_2;
     movie.Actors[2] = req.body.actor_3;
     
-    if(movie.Actors[0] == null || movie.Actors[1] == null || movie.Actors[2] == null)
+if(movie.Actors[0] == null || movie.Actors[1] == null || movie.Actors[2] == null || movie.Title == null || movie.Genre == null || movie.Year == null)
     {
         return res.json({Error: 'Missing attribute; could not add movie.'})
     }
