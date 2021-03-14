@@ -89,7 +89,7 @@ router.post('/signin', function (req, res) {
 });
 
 router.get('/movies', function (req, res) {
-    var getMovie = db.Cluster0.movies.findOne(req.body.title);
+    var getMovie = db.Cluster0.findOne(req.body.title);
     res.json(getMovie);
 });
 
