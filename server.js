@@ -91,7 +91,7 @@ router.post('/signin', function (req, res) {
 router.get('/movies', function (req, res) {
     console.log(req.body);
     var getMovie = Movie.findOne(req.body.title);
-    res.Movie(getMovie);
+    res.json(getMovie);
 });
 
 router.post('/movies', function (req, res) {
