@@ -89,18 +89,9 @@ router.post('/signin', function (req, res) {
 });
 
 router.get('/movies', function (req, res) {
-    var getMovie = Movie.findOne({ Title: req.body.title }, function(err,movie) {
-
-   if (err) {
-       return res.json(err);
-   }
-   else {
-        return movie;
-   }
-
-    });
-    console.log(getMovie);
-    res.json(getMovie.Title);
+    var getMovies = Movie.find({});
+    console.log(getMovies);
+    res.json(getMovies);
 });
 
 
