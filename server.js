@@ -98,7 +98,7 @@ router.get('/movies', function (req, res) {
         return movie;
    }
 
-}
+    });
     console.log(getMovie);
     res.json(getMovie.Title);
 });
