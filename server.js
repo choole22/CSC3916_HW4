@@ -89,8 +89,11 @@ router.post('/signin', function (req, res) {
 });
 
 router.get('/movies', function (req, res) {
-    var getMovie = db.findOne(req.body.title);
-    res.json(getMovie);
+    if (req.get('Content-Type')) {
+        res = res.type(req.get('Content-Type'));
+        }
+    var o = getJSONObjectForMovieRequirement(req);
+    res.json(o);
 });
 
 router.post('/movies', function (req, res) {
