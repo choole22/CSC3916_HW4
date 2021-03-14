@@ -92,7 +92,7 @@ router.get('/movies', function (req, res) {
     console.log(req.body);
     var getMovie = Movie.findOne(req.body.title);
     console.log(getMovie);
-    res.json(getMovie);
+    //res.json(getMovie);
 });
 
 router.post('/movies', function (req, res) {
