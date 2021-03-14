@@ -14,15 +14,15 @@ try {
 }
 mongoose.set('useCreateIndex', true);
 
-//Character schema
-var CharacterSchema = new Schema({
+//Actor schema
+var ActorSchema = new Schema({
     ActorName: String,
     CharacterName: String
 });
 
-CharacterSchema.pre('save', function(next) {
+ActorSchema.pre('save', function(next) {
     return next();
 });
 
 //return the model to server
-module.exports = mongoose.model('Character', CharacterSchema);
+module.exports = mongoose.model('Actor', ActorSchema);
