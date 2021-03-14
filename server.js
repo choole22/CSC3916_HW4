@@ -93,17 +93,24 @@ router.get('/movies', function (req, res) {
 });
 
 router.post('/movies', function (req, res) {
-    var newMovie = {
-        Title: req.body.title,
-        Genre: req.body.genre,
-        Year:  req.body.year,
-        Actor_1: req.body.actor_1,
-        Actor_2: req.body.actor_2,
-        Actor_3: req.body.actor_3
-    };
+    var movie = new Movie();
+    movie.Title = req.body.title;
+    movie.Genre = req.body.genre;
+    movie.Year = req.body.year;
+    movie.Title = req.body.actor_1;
+    movie.Title = req.body.actor_2;
+    movie.Title = req.body.actor_3;
 
-    db.save(newMovie); // No Dup-checking
-    res.json({status: 200, msg: 'Movie saved'})
+    movie.save(function(err){
+        if (err) {
+            if (err.code == 11000)
+                return res.json({ success: false, message: 'A movie with that title already exists.'});
+            else
+                return res.json(err);
+        }
+
+        res.json({success: true, msg: 'Successfully created new movie.'})
+    });
 });
 
 
