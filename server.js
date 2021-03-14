@@ -92,9 +92,14 @@ router.get('/movies', function (req, res) {
 });
 
 router.post('/movies', function (req, res) {
-   var newMovie = {
-       Movie_Title: req.body.mTitle
-   };
+    var newMovie = {
+        Title: req.body.title;
+        Genre: req.body.genre;
+        Year:  req.body.year;
+        Actor_1: req.body.actor_1;
+        Actor_2: req.body.actor_2;
+        Actor_3: req.body.actor_3;
+    };
 
    db.save(newMovie); // No Dup-checking
    res.json({status: 200, msg: 'Movie saved'})
