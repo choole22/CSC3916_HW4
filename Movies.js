@@ -23,7 +23,7 @@ var MovieSchema = new Schema({
     Actor_3: String
 });
 
-MovieSchema.pre('save', function(next) {
+MovieSchema.pre('save', function() {
     var movie = this;
 });
 
