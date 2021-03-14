@@ -27,8 +27,5 @@ MovieSchema.pre('save', function() {
     var movie = this;
 });
 
-
-}
-
 //return the model to server
 module.exports = mongoose.model('User', UserSchema);
