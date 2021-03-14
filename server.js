@@ -97,11 +97,19 @@ router.post('/movies', function (req, res) {
     movie.Title = req.body.title;
     movie.Genre = req.body.genre;
     movie.Year = req.body.year;
-    movie.Actors[0] = req.body.actor_1;
-    movie.Actors[1] = req.body.actor_2;
-    movie.Actors[2] = req.body.actor_3;
-    
-    if(movie.Actors[0].length < 1 || movie.Actors[1].length < 1 || movie.Actors[2].length < 1 || movie.Title.length < 1 || movie.Genre.length < 1 || movie.Year.length < 1)
+    movie.Actors[0] = new Actor();
+    movie.Actors[0].ActorName = req.body.actor1_name;
+    movie.Actors[0].CharacterName = req.body.actor1_character;
+    movie.Actors[1] = new Actor();
+    movie.Actors[1].ActorName = req.body.actor1_name;
+    movie.Actors[1].CharacterName = req.body.actor1_character;
+    movie.Actors[2] = new Actor();
+    movie.Actors[2].ActorName = req.body.actor1_name;
+    movie.Actors[2].CharacterName = req.body.actor1_character;
+
+    if(movie.Actors[0].ActorName.length < 1 || movie.Actors[1].ActorName.length < 1 || movie.Actors[2].ActorName.length < 1 || 
+       movie.Actors[0].CharacterName.length < 1 || movie.Actors[1].CharacterName.length < 1 || movie.Actors[2].CharacterName.length < 1 ||
+       movie.Title.length < 1 || movie.Genre.length < 1 || movie.Year.length < 1)
     {
         return res.json({Error: 'Missing attribute; could not add movie.'})
     }
