@@ -92,7 +92,7 @@ router.get('/movies', function (req, res) {
 });
 
 router.post('/movies', function (req, res) {
-    var movie = {
+    var newMovie = {
         Title: req.body.title,
         Genre: req.body.genre,
         Year:  req.body.year,
@@ -101,9 +101,10 @@ router.post('/movies', function (req, res) {
         Actor_3: req.body.actor_3
     };
 
-    movie.save(); // No Dup-checking
+    db.save(newMovie); // No Dup-checking
     res.json({status: 200, msg: 'Movie saved'})
 });
+
 
 router.route('/movies')
     .delete(authController.isAuthenticated, function(req, res) {
