@@ -88,13 +88,11 @@ router.post('/signin', function (req, res) {
     })
 });
 
-router.get(authJwtController.isAuthenticated, function (req, res) {
-    if (true) {
-        Movie.find({}, function (err, movies) {
-            if(err) {res.send(err);}
-            res.json({Movie: movies});
-        })
-    }
+router.get('/movies', function (req, res) {
+    Movie.find({}, function (err, movies) {
+        if(err) {res.send(err);}
+        res.json({Movie: movies});
+    })
 });
 
 
