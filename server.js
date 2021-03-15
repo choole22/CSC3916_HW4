@@ -154,6 +154,10 @@ router.route('/movies')
 
     .put(authJwtController.isAuthenticated, function(req, res) {
             console.log(req.body);
+            Movie.findOneAndUpdate({Title: req.body.title}, {Title: req.body.new_title},function (err, movies) {
+            if (err) {
+                res.send(err);
+            }
             res = res.status(200);
             res.json({msg: 'Movie Updated'})
                 /*
