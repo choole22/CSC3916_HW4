@@ -138,6 +138,7 @@ router.route('/movies')
                 if(err) {res.send(err);}
                 res = res.status(200);
                 res.json({msg: 'Movie Deleted'})
+            
 
                 if (req.get('Content-Type')) {
                     res = res.type(req.get('Content-Type'));
@@ -146,6 +147,7 @@ router.route('/movies')
                 res.json(o);
             }
         )
+    )
     .put(authJwtController.isAuthenticated, function(req, res) {
             console.log(req.body);
             res = res.status(200);
