@@ -138,7 +138,6 @@ router.route('/movies')
                 if(err) {res.send(err);}
                 res = res.status(200);
                 res.json({msg: 'Movie Deleted'})
-            )
 
                 if (req.get('Content-Type')) {
                     res = res.type(req.get('Content-Type'));
