@@ -134,20 +134,21 @@ router.post('/movies', function (req, res) {
 router.route('/movies')
     .delete(authController.isAuthenticated, function(req, res) {
         console.log(req.body);
-        Movie.findOneAndDelete({Title: req.body.title}, function (err, movies){
-                if(err) {res.send(err);}
-                res = res.status(200);
-                res.json({msg: 'Movie Deleted'})
-            
-
-                if (req.get('Content-Type')) {
-                    res = res.type(req.get('Content-Type'));
-                }
-                var o = getJSONObjectForMovieRequirement(req);
-                res.json(o);
+        Movie.findOneAndDelete({Title: req.body.title}, function (err, movies) {
+            if (err) {
+                res.send(err);
             }
-        )
-    )
+            res = res.status(200);
+            res.json({msg: 'Movie Deleted'})
+
+
+            if (req.get('Content-Type')) {
+                res = res.type(req.get('Content-Type'));
+            }
+            var o = getJSONObjectForMovieRequirement(req);
+            res.json(o);
+        })
+    })
     .put(authJwtController.isAuthenticated, function(req, res) {
             console.log(req.body);
             res = res.status(200);
