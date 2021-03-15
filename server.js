@@ -168,7 +168,7 @@ router.route('/movies')
                 res.json(o);
                  */
         })
-    );
+});
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
