@@ -167,7 +167,7 @@ router.route('/movies')
                 var o = getJSONObjectForMovieRequirement(req);
                 res.json(o);
                  */
-        }
+        })
     );
 
 app.use('/', router);
