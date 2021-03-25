@@ -15,6 +15,7 @@ var cors = require('cors');
 var User = require('./Users');
 var Movie = require('./Movies');
 var Actor = require('./Actors');
+var Review = require('./Reviews');
 
 var app = express();
 app.use(cors());
