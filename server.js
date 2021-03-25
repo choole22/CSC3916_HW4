@@ -170,6 +170,22 @@ router.route('/movies')
         })
 });
 
+router.post('/reviews', authJwtController.isAuthenticated, function(req, res) {
+    var reviewNew = new Review();
+    reviewNew.Name = req.body.name;
+    reviewNew.Title = req.body.title;
+    reviewNew.Comment = req.body.comment;
+    reviewNew.Rating = req.body.rating;
+
+    reviewNew.save(function(err){
+        if (err) {
+            return res.json(err);
+        }
+
+        res.json({success: true, msg: 'Successfully added new review.'})
+    });
+});
+
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
 module.exports = app; // for testing only
