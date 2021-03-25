@@ -15,7 +15,7 @@ mongoose.set('useCreateIndex', true);
 
 //review schema
 var ReviewSchema = new Schema({
-    UserName: String,
+    Name: String,
     Title: String,
     Comment: String,
     Rating: Number
