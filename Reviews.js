@@ -15,9 +15,10 @@ mongoose.set('useCreateIndex', true);
 
 //review schema
 var ReviewSchema = new Schema({
-    User: String,
+    Name: String,
     Title: String,
-    Comment: String
+    Comment: String,
+    Rating: Number
 });
 
 ReviewSchema.pre('save', function(next) {
