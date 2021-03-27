@@ -99,7 +99,10 @@ router.get('/movies', function (req, res) {
                 Review.findOne({Title: req.body.title}, function (err, reviews) {})
                 res.json({Movie: movies, Reviews: reviews});
             }
-            else{res.json({Movie: movies});}
+            else{
+                console.log("FALSE");
+                res.json({Movie: movies});
+            }
         }
     })
 });
