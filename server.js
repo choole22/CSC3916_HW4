@@ -94,13 +94,13 @@ router.get('/movies', function (req, res) {
         if(err) {res.send(err);}
         if(movies == null){res.json({success: false, msg: 'Movie not found.'});}
         else{
-            if( req.body.review === true) {
+            if( req.body.review == "true") {
                 console.log("TRUE");
                 Review.findOne({Title: req.body.title}, function (err, reviews) {})
                 res.json({Movie: movies, Reviews: reviews});
             }
             else{
-                console.log(req.body.review);
+                console.log("FALSE");
                 res.json({Movie: movies});
             }
         }
