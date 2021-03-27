@@ -89,27 +89,21 @@ router.post('/signin', function (req, res) {
     })
 });
 
-router.post('/reviews', authJwtController.isAuthenticated, function(req, res) {
+router.get('/movies', function (req, res) {
     Movie.findOne({Title: req.body.title}, function (err, movies) {
-        if (err) {
-            res.send(err);
-        }
-        if (movies == null) {
-            res.json({success: false, msg: 'Movie not found.'});
-        } else {
-
-            var reviewNew = new Review();
-            reviewNew.Name = req.body.name;
-            reviewNew.Title = req.body.title;
-            reviewNew.Comment = req.body.comment;
-            reviewNew.Rating = req.body.rating;
-
-            reviewNew.save(function (err) {
-                if (err) {
-                    return res.json(err);
-                }
-                res.json({success: true, msg: 'Successfully added new review.'})
-            });
+        if(err) {res.send(err);}
+        if(movies == null){res.json({success: false, msg: 'Movie not found.'});}
+        else{
+            if( req.body.review == "true") {
+                console.log("TRUE");
+                Review.findOne({Title: req.body.title}, function (err, reviews) {
+                    res.json({Movie: movies, Reviews: reviews});
+                })
+            }
+            else{
+                console.log("FALSE");
+                res.json({Movie: movies});
+            }
         }
     })
 });
@@ -191,9 +185,12 @@ router.route('/movies')
 
 router.post('/reviews', authJwtController.isAuthenticated, function(req, res) {
     Movie.findOne({Title: req.body.title}, function (err, movies) {
-        if(err) {res.send(err);}
-        if(movies == null){res.json({success: false, msg: 'Movie not found.'});}
-        else {
+        if (err) {
+            res.send(err);
+        }
+        if (movies == null) {
+            res.json({success: false, msg: 'Movie not found.'});
+        } else {
 
             var reviewNew = new Review();
             reviewNew.Name = req.body.name;
@@ -208,6 +205,7 @@ router.post('/reviews', authJwtController.isAuthenticated, function(req, res) {
                 res.json({success: true, msg: 'Successfully added new review.'})
             });
         }
+    })
 });
 
 router.get('/reviews', function (req, res) {
