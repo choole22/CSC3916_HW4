@@ -93,7 +93,7 @@ router.get('/movies', function (req, res) {
     Movie.findOne({Title: req.body.title}, function (err, movies) {
         if(err) {res.send(err);}
         if(movies == null){res.json({success: false, msg: 'Movie not found.'});}
-        res.json({Movie: movies});
+        else{res.json({Movie: movies});}
     })
 });
 
