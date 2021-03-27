@@ -100,7 +100,7 @@ router.get('/movies', function (req, res) {
                 res.json({Movie: movies, Reviews: reviews});
             }
             else{
-                console.log("FALSE");
+                console.log(req.body.review);
                 res.json({Movie: movies});
             }
         }
