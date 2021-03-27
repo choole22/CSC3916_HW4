@@ -180,12 +180,16 @@ router.post('/reviews', authJwtController.isAuthenticated, function(req, res) {
     reviewNew.Rating = req.body.rating;
 
     reviewNew.save(function(err){
-        if (err) {
-            return res.json(err);
-        }
-
+        if (err) {return res.json(err);}
         res.json({success: true, msg: 'Successfully added new review.'})
     });
+});
+
+router.get('/reviews', function (req, res) {
+    Review.find({}, function (err, reviews) {
+        if(err) {res.send(err);}
+        res.json({Review: reviews});
+    })
 });
 
 app.use('/', router);
