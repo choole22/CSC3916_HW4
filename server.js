@@ -188,6 +188,7 @@ router.post('/reviews', authJwtController.isAuthenticated, function(req, res) {
 router.get('/reviews', function (req, res) {
     Review.findOne({Title: req.body.title}, function (err, reviews) {
         if(err) {res.send(err);}
+        if(reviews == null){res.json({success: false, msg: 'Movie not found.'});}
         res.json({Review: reviews});
     })
 });
