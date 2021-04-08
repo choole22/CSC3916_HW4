@@ -94,7 +94,7 @@ router.get('/movies', function (req, res) {
         if(err) {res.send(err);}
         if(movies == null){res.json({success: false, msg: 'Movie not found.'});}
         else{
-            if( req.body.review == "true") {
+            if( req.query.review == "true") {
                 console.log("TRUE");
                 Review.find({Title: req.body.title}, function (err, reviews) {
                     res.json({Movie: movies, Reviews: reviews});
