@@ -18,7 +18,8 @@ var MovieSchema = new Schema({
     Title: String,
     Genre: String,
     Year:  String,
-    Actors: Array(3)
+    Actors: Array(3),
+    imageUrl: String
 });
 
 MovieSchema.pre('save', function(next) {
