@@ -123,6 +123,7 @@ router.post('/movies', function (req, res) {
     movie.Actors[2] = new Actor();
     movie.Actors[2].ActorName = req.body.actor3_name;
     movie.Actors[2].CharacterName = req.body.actor3_character;
+    movie.imageUrl = req.body.imageUrl;
 
     if(movie.Actors[0].ActorName.length < 1 || movie.Actors[1].ActorName.length < 1 || movie.Actors[2].ActorName.length < 1 || 
        movie.Actors[0].CharacterName.length < 1 || movie.Actors[1].CharacterName.length < 1 || movie.Actors[2].CharacterName.length < 1 ||
